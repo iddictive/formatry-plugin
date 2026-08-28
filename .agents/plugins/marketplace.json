@@ -1,0 +1,21 @@
+{
+  "name": "formatry",
+  "interface": {
+    "displayName": "Formatry",
+    "shortDescription": "Connect Formatry's hosted MCP from Codex without running a local server."
+  },
+  "plugins": [
+    {
+      "name": "formatry-api",
+      "source": {
+        "source": "local",
+        "path": "./plugins/formatry-api"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

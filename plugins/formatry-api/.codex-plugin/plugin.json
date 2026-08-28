@@ -1,0 +1,48 @@
+{
+  "name": "formatry-api",
+  "version": "0.2.0",
+  "description": "Prepare protected previews and saved Studio export quotes through Formatry's hosted MCP.",
+  "author": {
+    "name": "formatry.cc",
+    "email": "support@formatry.cc",
+    "url": "https://formatry.cc"
+  },
+  "homepage": "https://formatry.cc/developers/codex",
+  "repository": "https://github.com/iddictive/formatry-plugin",
+  "license": "UNLICENSED",
+  "keywords": [
+    "formatry",
+    "creative-pack",
+    "mcp",
+    "image-generation"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Formatry API",
+    "shortDescription": "Preview and edit saved Formatry Studio creatives.",
+    "longDescription": "Check access, upload an approved file, prepare a protected preview, inspect and edit a saved Studio creative at its exact revision, and create a visible export quote. Paid confirmation and export stay in Studio.",
+    "developerName": "formatry.cc",
+    "category": "Developer Tools",
+    "capabilities": [
+      "MCP",
+      "Read",
+      "Write",
+      "Image preview",
+      "File upload",
+      "Studio handoff"
+    ],
+    "websiteURL": "https://formatry.cc",
+    "privacyPolicyURL": "https://formatry.cc/privacy",
+    "termsOfServiceURL": "https://formatry.cc/terms",
+    "defaultPrompt": [
+      "Check my Formatry connection and tell me the next safe step.",
+      "Create a protected preview from this campaign file.",
+      "Preview this saved creative and prepare its Studio export quote."
+    ],
+    "brandColor": "#111111",
+    "composerIcon": "./assets/formatry-plugin-icon.png",
+    "logo": "./assets/formatry-plugin-logo.svg",
+    "logoDark": "./assets/formatry-plugin-logo-dark.svg"
+  }
+}

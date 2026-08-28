@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "formatry-api": {
+      "type": "streamable-http",
+      "url": "https://formatry.cc/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${FORMATRY_CC_API_KEY}"
+      }
+    }
+  }
+}
