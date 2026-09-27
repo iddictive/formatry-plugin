@@ -1,14 +1,18 @@
-# Formatry API agent plugin
+<h1 align="center">Formatry for agents</h1>
 
-Use the hosted Formatry MCP server for normal Codex or Cursor work:
+<p align="center">Connect Codex and Cursor to Formatry for creative previews and Studio editing through MCP.</p>
 
-```text
-https://formatry.cc/api/mcp
-```
+<p align="center">
+  <a href="#quick-start">Install</a> ·
+  <a href="https://formatry.cc/studio/settings/developer">Get an API key</a> ·
+  <a href="#prepare-a-creative">Workflow</a>
+</p>
 
-The plugin reads `FORMATRY_CC_API_KEY` from the client environment and sends it as a bearer token. Create or rotate a scoped key in [Formatry developer settings](https://formatry.cc/studio/settings/developer); keep the key out of chat and source files.
+Formatry's hosted MCP connection lets an agent check access, upload supported attachments, create protected previews, and propose edits to saved Studio creatives. Payment confirmation and paid export stay in Studio.
 
-## Connect
+The plugin connects directly to `https://formatry.cc/api/mcp`; it starts no local server. You need a scoped API key from [Formatry developer settings](https://formatry.cc/studio/settings/developer), supplied through `FORMATRY_CC_API_KEY`.
+
+## Quick start
 
 Install the public Codex plugin without downloading a bundle:
 
