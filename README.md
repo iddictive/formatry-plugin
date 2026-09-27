@@ -21,9 +21,9 @@ codex plugin marketplace add iddictive/formatry-plugin
 codex plugin add formatry-api@formatry
 ```
 
-Cursor can install the same hosted server through its native link:
+Add the hosted MCP server to Cursor:
 
-[Install Formatry MCP in Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=formatry-api&config=eyJmb3JtYXRyeS1hcGkiOnsidXJsIjoiaHR0cHM6Ly9mb3JtYXRyeS5jYy9hcGkvbWNwIiwiaGVhZGVycyI6eyJBdXRob3JpemF0aW9uIjoiQmVhcmVyICR7ZW52OkZPUk1BVFJZX0NDX0FQSV9LRVl9In19fQ==)
+[![Add Formatry MCP to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=formatry-api&config=eyJmb3JtYXRyeS1hcGkiOnsidXJsIjoiaHR0cHM6Ly9mb3JtYXRyeS5jYy9hcGkvbWNwIiwiaGVhZGVycyI6eyJBdXRob3JpemF0aW9uIjoiQmVhcmVyICR7ZW52OkZPUk1BVFJZX0NDX0FQSV9LRVl9In19fQ%3D%3D)
 
 Then set the key in the environment that starts your agent client:
 
