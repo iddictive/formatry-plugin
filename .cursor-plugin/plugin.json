@@ -1,22 +1,15 @@
 {
   "name": "formatry-api",
   "displayName": "Formatry API",
-  "version": "0.2.0",
-  "description": "Prepare Formatry creative previews and saved Studio export quotes through hosted MCP.",
+  "version": "0.2.1",
+  "description": "Prepare Formatry creative previews and exact saved Studio edits through hosted MCP.",
   "author": {
     "name": "formatry.cc",
     "url": "https://formatry.cc"
   },
   "homepage": "https://formatry.cc/developers/codex",
-  "license": "UNLICENSED",
   "keywords": ["formatry", "creative-pack", "mcp", "image-generation"],
+  "logo": "./assets/formatry-plugin-logo.svg",
   "skills": "./skills/",
-  "mcpServers": "./mcp.json",
-  "variables": {
-    "FORMATRY_CC_API_KEY": {
-      "description": "Scoped Formatry API key; create it in Formatry developer settings.",
-      "required": true,
-      "sensitive": true
-    }
-  }
+  "mcpServers": "./mcp.json"
 }

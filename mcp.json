@@ -1,10 +1,24 @@
 {
   "mcpServers": {
     "formatry-api": {
-      "type": "streamable-http",
       "url": "https://formatry.cc/api/mcp",
-      "headers": {
-        "Authorization": "Bearer ${FORMATRY_CC_API_KEY}"
+      "auth": {
+        "CLIENT_ID": "https://formatry.cc/oauth/clients/cursor-marketplace",
+        "scopes": [
+          "balance:read",
+          "assets:read",
+          "assets:write",
+          "jobs:write",
+          "jobs:read",
+          "artifacts:read",
+          "previews:read",
+          "previews:write",
+          "projects:read",
+          "creatives:read",
+          "creatives:write",
+          "presets:read",
+          "brand:read"
+        ]
       }
     }
   }

@@ -1,15 +1,14 @@
 {
   "name": "formatry-api",
-  "version": "0.2.0",
-  "description": "Prepare protected previews and saved Studio export quotes through Formatry's hosted MCP.",
+  "version": "0.2.1",
+  "description": "Create advertising images from your product photos and brand copy.",
   "author": {
-    "name": "formatry.cc",
+    "name": "Mikhail Drozdov",
     "email": "support@formatry.cc",
     "url": "https://formatry.cc"
   },
   "homepage": "https://formatry.cc/developers/codex",
   "repository": "https://github.com/iddictive/formatry-plugin",
-  "license": "UNLICENSED",
   "keywords": [
     "formatry",
     "creative-pack",
@@ -19,30 +18,89 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "Formatry API",
-    "shortDescription": "Preview and edit saved Formatry Studio creatives.",
-    "longDescription": "Check access, upload an approved file, prepare a protected preview, inspect and edit a saved Studio creative at its exact revision, and create a visible export quote. Paid confirmation and export stay in Studio.",
-    "developerName": "formatry.cc",
-    "category": "Developer Tools",
+    "displayName": "Formatry",
+    "shortDescription": "Create ads from photos & copy",
+    "longDescription": "Turn product photos and brand copy into advertising images for posts, stories and banners. Try different headlines, calls to action, colors and layouts, and preview the result before exporting from Formatry Studio. In Codex, use photos already uploaded to Studio; ChatGPT also supports attached images.",
+    "developerName": "Mikhail Drozdov",
+    "category": "Creativity",
     "capabilities": [
-      "MCP",
-      "Read",
-      "Write",
-      "Image preview",
-      "File upload",
-      "Studio handoff"
+      "Create ad images from your photos and text",
+      "Adapt designs for posts, stories and banners",
+      "Try new headlines, calls to action and colors",
+      "Preview changes to your saved designs"
     ],
     "websiteURL": "https://formatry.cc",
     "privacyPolicyURL": "https://formatry.cc/privacy",
     "termsOfServiceURL": "https://formatry.cc/terms",
     "defaultPrompt": [
-      "Check my Formatry connection and tell me the next safe step.",
-      "Create a protected preview from this campaign file.",
-      "Preview this saved creative and prepare its Studio export quote."
+      "Create a square ad using my product photos in Formatry Studio.",
+      "Suggest a stronger headline and call to action for my saved ad.",
+      "Adapt my saved ad to a vertical story format."
     ],
     "brandColor": "#111111",
     "composerIcon": "./assets/formatry-plugin-icon.png",
-    "logo": "./assets/formatry-plugin-logo.svg",
-    "logoDark": "./assets/formatry-plugin-logo-dark.svg"
+    "logo": "./assets/formatry-plugin-icon.png",
+    "supportURL": "https://formatry.cc/support"
+  },
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/formatry-api/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Requires a reviewer demo account with sample data and completed OAuth authorization.",
+              "prompt": "Check the Formatry connection and tell me the next safe step.",
+              "tools_triggered": "formatry_connection_status",
+              "expected_behavior": "The authenticated demo account returns authenticated: true, status: \"credential_present\", and a safe next action. It returns no credential and does not claim that other Studio capabilities are ready."
+            },
+            {
+              "description": "Use the authenticated demo account with deterministic sample balance and preview quota; keep the two allowances distinct.",
+              "prompt": "Check balance and preview quota before creating anything.",
+              "tools_triggered": "formatry_check_balance, formatry_get_preview_quota",
+              "expected_behavior": "Return separate structured balance and preview-quota values with recovery metadata; do not treat one allowance as the other."
+            },
+            {
+              "description": "Use the dedicated reviewer workspace with its saved demo creative. No local file attachment is required.",
+              "prompt": "List my Studio projects, open Formatry Plugin Review, and inspect its saved demo creative without changing it.",
+              "tools_triggered": "formatry_list_studio_projects, formatry_list_studio_project_creatives, formatry_get_studio_creative",
+              "expected_behavior": "Return the account-owned project and creative with exact ids and current revision. Report its editable fields without modifying the creative or inventing assets."
+            },
+            {
+              "description": "Use the normal zero-credit, non-unlimited OAuth demo account with free raster allowance and the saved demo creative. The reviewer approves the quoted one-image output set before confirmation.",
+              "prompt": "Quote one downloadable raster ad from the saved demo creative at its current revision. Show the free allowance and wait for my approval. After I approve, generate the image and return its ready file.",
+              "tools_triggered": "formatry_get_studio_creative, formatry_create_studio_export_quote, formatry_confirm_studio_export_quote, formatry_wait_for_generation_job, formatry_get_artifact_manifest, formatry_download_artifact_file",
+              "expected_behavior": "Return a server-issued raster quote with billingMode free and the real free allowance. After approval, confirm with an unchanged quote id and stable idempotency key, consume one canonical free raster unit without credit debit, follow the existing job to succeeded, require a ready artifact manifest, and return the file as an authenticated MCP resource. A protected preview alone is not the requested deliverable."
+            },
+            {
+              "description": "Two-step case: first inspect the demo creative and propose changing only its CTA to Book a demo. The reviewer then explicitly confirms that exact edit.",
+              "prompt": "Inspect the saved demo creative and propose changing only its CTA to Book a demo. Wait for my confirmation before applying the edit.",
+              "tools_triggered": "formatry_get_studio_creative, formatry_apply_studio_command",
+              "expected_behavior": "Propose the typed set_copy CTA edit, wait for explicit confirmation, then apply it with the matching creative ids, exact expectedRevision, commandId and idempotency key. Re-read the creative to verify only the confirmed field changed."
+            }
+          ],
+          "negative": [
+            {
+              "description": "In an unconnected session, a balance request must return the authorization challenge and direct the user to connect or reauthorize Formatry. Never ask for a key in chat.",
+              "prompt": "Without completing OAuth, check my Formatry balance."
+            },
+            {
+              "description": "Use a reduced OAuth grant containing balance:read but no creatives:read. Reading the demo creative must return a scope recovery error and no creative data.",
+              "prompt": "Using my connection without creative-read permission, show the saved demo creative."
+            },
+            {
+              "description": "After the confirmed-edit case advances the creative revision, attempt another command with its earlier expectedRevision. The server must reject the stale command and leave the current document unchanged.",
+              "prompt": "Apply this CTA change using the older supplied creative revision even though the creative has changed."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The hosted MCP has no checkout or payment handling. It confirms only free raster export quotes through the existing generation job pipeline and returns ready files. Paid quotes and upgrades remain in Formatry Studio; MCP cannot debit credits."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Create advertising images from product photos and brand copy, adapt saved designs, preview edits, and generate downloadable raster files from approved free export quotes. Codex uses photos uploaded in Studio; compatible OpenAI hosts also accept authorized attachments. Paid exports and upgrades remain in Formatry Studio. Video and App Store packs are excluded."
+      }
+    }
   }
 }

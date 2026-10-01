@@ -2,10 +2,7 @@
   "mcpServers": {
     "formatry-api": {
       "type": "http",
-      "url": "https://formatry.cc/api/mcp",
-      "bearer_token_env_var": "FORMATRY_CC_API_KEY",
-      "startup_timeout_sec": 10,
-      "tool_timeout_sec": 60
+      "url": "https://formatry.cc/api/mcp"
     }
   }
 }

@@ -1,7 +1,15 @@
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "formatry-api"
+      description: "Create advertising images from product photos and brand copy, and edit saved Formatry designs."
+      transport: "streamable_http"
+      url: "https://formatry.cc/api/mcp"
+
 interface:
   display_name: "Formatry API"
-  short_description: "Preview and edit Formatry Studio creatives"
+  short_description: "Create ads from photos & copy"
   icon_small: "./assets/formatry-plugin-icon.png"
   icon_large: "./assets/formatry-plugin-icon.png"
   brand_color: "#111111"
-  default_prompt: "Use $formatry-api to check access, prepare a protected preview, and edit a saved Studio creative."
+  default_prompt: "Use $formatry-api to create a square ad from my product photos in Formatry Studio."
