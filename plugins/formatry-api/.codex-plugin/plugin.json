@@ -1,6 +1,6 @@
 {
   "name": "formatry-api",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Create advertising images from your product photos and brand copy.",
   "author": {
     "name": "Mikhail Drozdov",
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Formatry",
     "shortDescription": "Create ads from photos & copy",
-    "longDescription": "Turn product photos and brand copy into advertising images for posts, stories and banners. Try different headlines, calls to action, colors and layouts, and preview the result before exporting from Formatry Studio. In Codex, use photos already uploaded to Studio; ChatGPT also supports attached images.",
+    "longDescription": "Create a saved ad from local product photos and brand copy, edit it, preview it and save approved free raster exports directly in your Codex workspace. The bundled file helper transfers verified bytes without account secrets. Native OAuth handles account connection; paid exports still require Formatry Studio.",
     "developerName": "Mikhail Drozdov",
     "category": "Creativity",
     "capabilities": [
@@ -33,7 +33,7 @@
     "privacyPolicyURL": "https://formatry.cc/privacy",
     "termsOfServiceURL": "https://formatry.cc/terms",
     "defaultPrompt": [
-      "Create a square ad using my product photos in Formatry Studio.",
+      "Create a square ad using my local product photos and save one free PNG in this workspace.",
       "Suggest a stronger headline and call to action for my saved ad.",
       "Adapt my saved ad to a vertical story format."
     ],
@@ -99,7 +99,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "Create advertising images from product photos and brand copy, adapt saved designs, preview edits, and generate downloadable raster files from approved free export quotes. Codex uses photos uploaded in Studio; compatible OpenAI hosts also accept authorized attachments. Paid exports and upgrades remain in Formatry Studio. Video and App Store packs are excluded."
+        "release_notes": "Create named projects, upload local source files with the bundled helper, edit saved raster designs and save verified files in Codex. Transfers are short-lived and scoped to one file. Native OAuth handles connection. Paid exports, video and App Store packs remain outside this hosted release."
       }
     }
   }

@@ -14,6 +14,7 @@
           "previews:read",
           "previews:write",
           "projects:read",
+          "projects:write",
           "creatives:read",
           "creatives:write",
           "presets:read",

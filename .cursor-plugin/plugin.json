@@ -1,14 +1,19 @@
 {
   "name": "formatry-api",
   "displayName": "Formatry API",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Prepare Formatry creative previews and exact saved Studio edits through hosted MCP.",
   "author": {
     "name": "formatry.cc",
     "url": "https://formatry.cc"
   },
   "homepage": "https://formatry.cc/developers/codex",
-  "keywords": ["formatry", "creative-pack", "mcp", "image-generation"],
+  "keywords": [
+    "formatry",
+    "creative-pack",
+    "mcp",
+    "image-generation"
+  ],
   "logo": "./assets/formatry-plugin-logo.svg",
   "skills": "./skills/",
   "mcpServers": "./mcp.json"
