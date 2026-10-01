@@ -6,7 +6,7 @@ Use the hosted Formatry MCP server for normal Codex or Cursor work:
 https://formatry.cc/api/mcp
 ```
 
-The distributed plugin connects only to the hosted MCP URL. Codex discovers Formatry's OAuth metadata from that endpoint. Cursor uses Formatry's predefined public marketplace client and the exact scopes required by the 26 published tools. Neither install needs a local server, package download, API key, or client secret.
+The distributed plugin connects only to the hosted MCP URL. Codex discovers Formatry's OAuth metadata from that endpoint. Cursor uses Formatry's predefined public marketplace client and the exact scopes required by the 27 published tools. Neither install needs a local server, package download, API key, or client secret.
 
 ## Connect
 
@@ -79,4 +79,4 @@ The public plugin starts no local subprocess. Codex and Cursor connect directly 
 
 The bundled skill includes `scripts/formatry-files.mjs` for Node 22+ and ordinary host shell/filesystem permissions. It is not a local MCP process and does not read Codex credentials. The agent inspects an authorized source, prepares an upload through MCP, passes its encrypted two-minute capability to the helper on stdin, and completes the existing upload intent. Ready exports use `formatry_prepare_artifact_download` and the same helper to save checksum-verified files in the selected workspace, then open the actual result. Tickets must never be printed, persisted or placed in command-line arguments. The helper refuses redirects, workspace escapes, changed sources and overwriting existing output files. Transfer size is at most 25 MiB per file. Native OAuth still handles sign-in/signup/consent; normal work does not require the Studio UI. Resource-aware hosts may retain the existing embedded-file path. Hosts without permitted shell/filesystem input need that compatible resource path or an explicit limitation; remote MCP alone cannot write their disks.
 
-This release does not yet expose paid confirmation or multiple creative creation in one project. These limits must not be described as a fully autonomous campaign implementation. Tests of the protocol and helper are not proof of a live Codex UI run.
+Use `formatry_add_creative` to create additional named blank raster concepts in one active campaign, with a stable creation key per concept. Replays retain later design edits and return the current revision; renamed/archived targets conflict safely. This release does not yet expose paid confirmation. That limit must not be described as solved. Tests of the protocol and helper are not proof of a live Codex UI run.

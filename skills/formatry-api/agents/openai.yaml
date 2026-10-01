@@ -13,4 +13,3 @@ interface:
   icon_large: "./assets/formatry-plugin-icon.png"
   brand_color: "#111111"
   default_prompt: "Use $formatry-api to create a square ad from my local product photos and save one free PNG in this workspace."
-

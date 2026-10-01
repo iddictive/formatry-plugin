@@ -1,6 +1,6 @@
 {
   "name": "formatry-api",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Create advertising images from your product photos and brand copy.",
   "author": {
     "name": "Mikhail Drozdov",
@@ -99,7 +99,7 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "Create named projects, upload local source files with the bundled helper, edit saved raster designs and save verified files in Codex. Transfers are short-lived and scoped to one file. Native OAuth handles connection. Paid exports, video and App Store packs remain outside this hosted release."
+        "release_notes": "Create named campaign projects with independent raster creatives, upload local sources with the bundled helper, edit saved designs and save verified outputs in Codex. Stable creation keys resume the existing creative without resetting later edits. Native OAuth handles connection; paid exports, video and App Store packs remain outside this release."
       }
     }
   }
