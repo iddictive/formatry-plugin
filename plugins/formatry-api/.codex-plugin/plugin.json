@@ -1,6 +1,6 @@
 {
   "name": "formatry-api",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Create advertising images from your product photos and brand copy.",
   "author": {
     "name": "Mikhail Drozdov",
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Formatry",
     "shortDescription": "Create ads from photos & copy",
-    "longDescription": "Create a saved ad from local product photos and brand copy, edit it, preview it and save approved free raster exports directly in your Codex workspace. The bundled file helper transfers verified bytes without account secrets. Native OAuth handles account connection; paid exports still require Formatry Studio.",
+    "longDescription": "Create campaign ad concepts from local product photos and brand copy, edit and preview them, and save verified raster files directly in your Codex workspace. Native OAuth connects your account. Exports use available image allowance or an existing included subscription entitlement; the plugin does not sell credits or start checkout.",
     "developerName": "Mikhail Drozdov",
     "category": "Creativity",
     "capabilities": [
@@ -33,7 +33,7 @@
     "privacyPolicyURL": "https://formatry.cc/privacy",
     "termsOfServiceURL": "https://formatry.cc/terms",
     "defaultPrompt": [
-      "Create a square ad using my local product photos and save one free PNG in this workspace.",
+      "Create a square ad using my local product photos and save one PNG using my available allowance.",
       "Suggest a stronger headline and call to action for my saved ad.",
       "Adapt my saved ad to a vertical story format."
     ],
@@ -95,11 +95,11 @@
           ]
         },
         "commerce": false,
-        "commerce_description": "The hosted MCP has no checkout or payment handling. It confirms only free raster export quotes through the existing generation job pipeline and returns ready files. Paid quotes and upgrades remain in Formatry Studio; MCP cannot debit credits."
+        "commerce_description": "No checkout, payment collection, credit sale or subscription creation. Raster exports use the connected account's free allowance or already-included subscription quota/unlimited access. Included-export confirmation requires exact approved quote units and cannot debit purchased-credit balances."
       },
       "publication": {
         "countries": [],
-        "release_notes": "Create named campaign projects with independent raster creatives, upload local sources with the bundled helper, edit saved designs and save verified outputs in Codex. Stable creation keys resume the existing creative without resetting later edits. Native OAuth handles connection; paid exports, video and App Store packs remain outside this release."
+        "release_notes": "Native campaign projects and independent concepts, local file transfer, revision-safe edits and verified raster delivery. Approved exports may use free-image allowance or existing included subscription quota/unlimited access. No purchased-credit fallback, credit sale, subscription signup, checkout or upgrade promotion."
       }
     }
   }
