@@ -46,6 +46,7 @@
     "com.openai": {
       "onboardingSkill": "./skills/formatry-api/SKILL.md",
       "review": {
+        "demo_recording_url": "https://github.com/iddictive/formatry-plugin/releases/download/review-demo-0.4.0/formatry-plugin-review-v2.mp4",
         "test_cases": {
           "positive": [
             {
