@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Formatry",
     "shortDescription": "Create ads from photos & copy",
-    "longDescription": "Create campaign ad concepts from local product photos and brand copy, edit and preview them, and save verified raster files directly in your Codex workspace. Native OAuth connects your account. Exports use available image allowance or an existing included subscription entitlement; the plugin does not sell credits or start checkout.",
+    "longDescription": "Create campaign ad concepts from local product photos and brand copy, edit and preview them, and save verified raster files directly in your Codex workspace. Native OAuth connects your account.",
     "developerName": "Mikhail Drozdov",
     "category": "Creativity",
     "capabilities": [
@@ -74,24 +74,24 @@
               "expected_behavior": "Return a server-issued raster quote with billingMode free and the real free allowance. After approval, confirm with an unchanged quote id and stable idempotency key, consume one canonical free raster unit without credit debit, follow the existing job to succeeded, require a ready artifact manifest, and return the file as an authenticated MCP resource. A protected preview alone is not the requested deliverable."
             },
             {
-              "description": "Two-step case: first inspect the demo creative and propose changing only its CTA to Book a demo. The reviewer then explicitly confirms that exact edit.",
-              "prompt": "Inspect the saved demo creative and propose changing only its CTA to Book a demo. Wait for my confirmation before applying the edit.",
+              "description": "Two-step case: inspect the demo creative and propose changing only its CTA to Book a demo, or Schedule a demo if the saved CTA is already Book a demo. The reviewer then explicitly confirms that exact edit.",
+              "prompt": "Inspect the saved demo creative and propose changing only its CTA to Book a demo, or Schedule a demo if it is already Book a demo. Wait for my confirmation before applying the edit.",
               "tools_triggered": "formatry_get_studio_creative, formatry_apply_studio_command",
               "expected_behavior": "Propose the typed set_copy CTA edit, wait for explicit confirmation, then apply it with the matching creative ids, exact expectedRevision, commandId and idempotency key. Re-read the creative to verify only the confirmed field changed."
             }
           ],
           "negative": [
             {
-              "description": "In an unconnected session, a balance request must return the authorization challenge and direct the user to connect or reauthorize Formatry. Never ask for a key in chat.",
-              "prompt": "Without completing OAuth, check my Formatry balance."
+              "description": "Copywriting without an image or saved-design operation does not require Formatry. Return plain text without invoking its MCP tools.",
+              "prompt": "Write three short headlines for a coffee brand as plain text. Do not create or edit an image or saved design."
             },
             {
-              "description": "Use a reduced OAuth grant containing balance:read but no creatives:read. Reading the demo creative must return a scope recovery error and no creative data.",
-              "prompt": "Using my connection without creative-read permission, show the saved demo creative."
+              "description": "Website implementation is outside the raster-ad plugin's capabilities. Do not invoke Formatry to create a website or claim that an image export is an implemented page.",
+              "prompt": "Implement a React landing page with a working contact form for my product."
             },
             {
-              "description": "After the confirmed-edit case advances the creative revision, attempt another command with its earlier expectedRevision. The server must reject the stale command and leave the current document unchanged.",
-              "prompt": "Apply this CTA change using the older supplied creative revision even though the creative has changed."
+              "description": "Checkout, credit purchases and new subscriptions are outside this plugin's capabilities. Explain that limit without invoking Formatry generation or payment tools, starting checkout, or promoting an upgrade.",
+              "prompt": "Buy 100 Formatry credits and start a new paid subscription for me."
             }
           ]
         },
